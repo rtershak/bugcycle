@@ -1,0 +1,16 @@
+%h2
+  %a{href: bicycle_path(bicycle)}
+    = bicycle.name
+  %p.lead
+    = "by #{bicycle.user.email}"
+  %p
+    %span.glyphicon.glyphicon-time
+    = "Posted on #{bicycle.created_at.localtime.strftime("%m %d, Y at %r")}"
+  %hr
+  %img.img-responsive{src: bicycle.image}
+  %hr
+  %p
+    = truncate(bicycle.description, 100)
+  %a.btn.btn-primary{href: bicycle_path(bicycle)}
+    Read More
+    %span.glyphicon.glyphicon-chevron-right

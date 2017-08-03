@@ -1,5 +1,5 @@
 class BicyclesController < ApplicationController
   def index
-    render text: 'hello'
+    @bicycles = Bicycle.paginate(page: params[:page], per_page: 3)
   end
 end

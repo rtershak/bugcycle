@@ -1,0 +1,11 @@
+%tr.info
+  %td.text-center
+    = link_to " #{bicycle.name}", bicycle_path(bicycle), class: 'glyphicon-th-list'
+  %td.text-center
+    = bicycle.category.title
+  %td.text-center
+    = bicycle.created_at.localtime.strftime("%d/%m/%Y at %r")
+  %td.text-center
+    = link_to 'Edit', edit_users_bicycle_path(bicycle), class: 'btn btn-primary'
+  %td.text-center
+    = link_to 'Delete', bicycle, method: :delete, data: {confirm: 'You sure?'}, class: 'btn btn-danger'

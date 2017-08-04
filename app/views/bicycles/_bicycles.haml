@@ -1,3 +1,5 @@
 %h1.page-header.text-center Bicycles
 = render @bicycles
-= will_paginate @bicycles
+%br
+.text-center
+  = will_paginate @bicycles, renderer: BootstrapPagination::Rails

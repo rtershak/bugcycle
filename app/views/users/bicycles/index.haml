@@ -1,0 +1,19 @@
+%h1 My Bicycles
+= link_to 'Create', new_users_bicycle_path, class: 'btn btn-success'
+%br
+
+.center
+  = will_paginate @bicycles, renderer: BootstrapPagination::Rails
+%br
+.table-responsive
+  %table.table.table-bordered.table-hover
+    %tr.active
+      %th
+        %h4 Name
+      %th
+        %h4.text-center Category
+      %th
+        %h4.text-center Date
+      %th{colspan: 2}
+        %h4.text-center Actions
+    = render @bicycles

@@ -31,13 +31,21 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :face do
-    process resize_to_fit: [900, 300]
+    process resize_to_fill: [900, 300]
+  end
+
+  version :preview do
+    process resize_to_fill: [500, 200]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_whitelist
     %w(jpg jpeg gif png)
+  end
+
+  def default_url
+    ActionController::Base.helpers.asset_path('images/default-bicycle.jpg')
   end
 
   # Override the filename of the uploaded files:

@@ -7,10 +7,9 @@
   %span.glyphicon.glyphicon-time
   = "Posted on #{bicycle.created_at.localtime.strftime("%B %d, %Y at %r")}"
 %hr
-%img.img-responsive{src: bicycle.image_url}
+%img.img-responsive{src: bicycle.image.face.url}
 %hr
 %p
-  = truncate(bicycle.description, length: 100)
+  = truncate(bicycle.description, length: 400)
 %a.btn.btn-primary{href: bicycle_path(bicycle)}
   Read More
-  %span.glyphicon.glyphicon-chevron-right

@@ -1,14 +1,14 @@
 .row
   .col-md-8
-    = render 'bicycles/bicycles'
+    %h1.page-header.text-center Bicycles
+    #bicycles
+      = render 'bicycles/bicycles'
   .col-md-4
     .well
       %h4 Bicycle Search
-      .input-group
-        %input.form-control{:type => "text"}/
-        %span.input-group-btn
-          %button.btn.btn-default{:type => "button"}
-            %span.glyphicon.glyphicon-search
+      = form_tag(bicycles_path, method: :get, remote: true, id: 'search-bicycles') do
+        .input-group
+          = text_field_tag :param, params[:param], class: 'form-control'
     = render 'shared/categories'
     = render 'shared/widget'
 %hr

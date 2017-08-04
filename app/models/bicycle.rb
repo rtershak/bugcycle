@@ -6,4 +6,12 @@ class Bicycle < ApplicationRecord
 
   belongs_to :category
   belongs_to :user
+
+  def self.search(param)
+    if param
+      where('name ILIKE ? OR description ILIKE ?', "%#{param}%", "%#{param}%")
+    else
+      all
+    end
+  end
 end

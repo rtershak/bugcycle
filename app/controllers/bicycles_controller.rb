@@ -2,7 +2,7 @@ class BicyclesController < ApplicationController
   before_action :initialize_bicycle, except: %i(index create)
 
   def index
-    @bicycles = Bicycle.paginate(page: params[:page], per_page: 2)
+    @bicycles = Bicycle.search(params[:param]).paginate(page: params[:page], per_page: 2)
   end
 
   def show

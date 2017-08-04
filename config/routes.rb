@@ -7,5 +7,7 @@ Rails.application.routes.draw do
     resources :bicycles, only: %i(index new edit)
   end
 
-  resources :bicycles
+  resources :bicycles do
+    post :use, on: :member
+  end
 end

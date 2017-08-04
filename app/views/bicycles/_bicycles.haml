@@ -1,6 +1,5 @@
 = render @bicycles
 %br
 .text-center
-  %h2
-    = "No result" unless @bicycles.any?
+  = "No result" unless @bicycles.any?
   = will_paginate @bicycles, renderer: BootstrapPagination::Rails

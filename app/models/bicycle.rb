@@ -7,6 +7,8 @@ class Bicycle < ApplicationRecord
   belongs_to :category
   belongs_to :user
 
+  default_scope { order(created_at: :desc) }
+
   def self.search(param)
     if param
       where('name ILIKE ? OR description ILIKE ?', "%#{param}%", "%#{param}%")

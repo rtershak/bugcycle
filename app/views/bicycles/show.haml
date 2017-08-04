@@ -1,12 +1,17 @@
 .row
   .col-md-8
-    %h2
-      = @bicycle.name
-    %p.lead
-      = "by #{@bicycle.user.email}"
-    %p
-      %span.glyphicon.glyphicon-time
-      = "Posted on #{@bicycle.created_at.localtime.strftime("%B %d, %Y at %r")}"
+    .row
+      .col-md-5
+        %h2
+          %a{href: bicycle_path(@bicycle)}
+            = @bicycle.name
+        %p.lead
+          = "by #{@bicycle.user.email}"
+        %p
+          %span.glyphicon.glyphicon-time
+          = "Posted on #{@bicycle.created_at.localtime.strftime("%B %d, %Y at %r")}"
+      .col-md-7.text-right
+        = link_to 'Use it!', use_bicycle_path(@bicycle), method: :post, class: 'btn btn-danger'
     %hr
     %img.img-responsive{src: @bicycle.image.face.url}
     %hr

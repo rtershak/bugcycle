@@ -1,0 +1,10 @@
+%ol.breadcrumb
+  %li
+    = link_to 'Bicycles', users_bicycles_path
+  %li.active Suggestions
+
+= render @suggestions
+%br
+.text-center
+  = "No result" unless @suggestions.any?
+  = will_paginate @suggestions, renderer: BootstrapPagination::Rails

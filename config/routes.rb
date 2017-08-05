@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'suggestions/new'
+
+  get 'suggestions/create'
+
   root to: 'bicycles#index'
 
   devise_for :users
@@ -9,5 +13,8 @@ Rails.application.routes.draw do
 
   resources :bicycles do
     post :use, on: :member
+
+    resources :suggestions
   end
+
 end

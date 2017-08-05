@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :bicycles
   has_many :usages
+  has_many :suggestions
 end

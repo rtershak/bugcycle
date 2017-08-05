@@ -1,0 +1,16 @@
+%ol.breadcrumb
+  %li
+    = link_to 'Bicycles', users_bicycles_path
+  %li
+    = link_to 'Suggesions', bicycle_suggestions_path(@bicycle)
+  %li.active Merge
+
+.center
+  = form_for [@bicycle, @suggestion] do |f|
+    %p
+      = f.label :name
+      = f.text_field :name, class: 'form-control'
+    %p
+      = f.label :description
+      = f.text_area :description, class: 'form-control', rows: 10
+    = f.submit 'Merge', class: 'btn btn-success'

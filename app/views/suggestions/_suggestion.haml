@@ -1,0 +1,16 @@
+.center
+  %hr
+  .row
+    .col-md-8
+      %h2
+        %a{href: edit_bicycle_suggestion_path(@bicycle, suggestion)}
+          = suggestion.name
+      %p.lead
+        = "by #{suggestion.user.email}"
+      %p
+        %span.glyphicon.glyphicon-time
+        = "Suggested on #{suggestion.created_at.localtime.strftime("%B %d, %Y at %r")}"
+  %br
+  %p
+    = suggestion.description.gsub(/\n/, '<br>').html_safe
+  %hr

@@ -7,6 +7,8 @@ class Bicycle < ApplicationRecord
   belongs_to :category
   belongs_to :user
 
+  has_many :suggestions
+
   default_scope { order(created_at: :desc) }
 
   def self.search(param)

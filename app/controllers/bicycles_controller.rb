@@ -2,7 +2,7 @@ class BicyclesController < ApplicationController
   before_action :initialize_bicycle, except: %i(index create)
 
   def index
-    @bicycles = Bicycle.where.not(id: current_user.usages.pluck(:bicycle_id)).
+    @bicycles = Bicycle.where.not(id: current_user&.usages&.pluck(:bicycle_id)).
                         search(params[:param]).paginate(page: params[:page], per_page: 2)
   end
 
@@ -28,7 +28,7 @@ class BicyclesController < ApplicationController
   end
 
   def use
-    current_user.usages.create!(bicycle_id: @bicycle.id)
+    current_user.usages.create(bicycle_id: @bicycle.id)
 
     respond_to do |format|
       format.html { redirect_to root_path }

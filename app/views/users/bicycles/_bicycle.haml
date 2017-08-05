@@ -6,6 +6,8 @@
   %td.text-center
     = bicycle.created_at.localtime.strftime("%d/%m/%Y at %r")
   %td.text-center
+    = link_to bicycle.suggestions.size, bicycle_suggestions_path(bicycle)
+  %td.text-center
     = link_to 'Edit', edit_users_bicycle_path(bicycle), class: 'btn btn-primary'
   %td.text-center
     = link_to 'Delete', bicycle, method: :delete, data: {confirm: 'You sure?'}, class: 'btn btn-danger'

@@ -5,7 +5,7 @@
       = render 'bicycles/bicycles'
   .col-md-4
     .well
-      %h4 Bicycle Search
+      %h4.text-center Search
       = form_tag(bicycles_path, method: :get, remote: true, id: 'search-bicycles') do
         .input-group
           = text_field_tag :param, params[:param], class: 'form-control'

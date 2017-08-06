@@ -31,3 +31,7 @@ group :development do
   gem 'spring', '~>2.0.2'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
+
+group :production do
+  gem 'rails_12factor', '~> 0.0.3'
+end

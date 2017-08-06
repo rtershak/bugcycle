@@ -9,6 +9,7 @@
       = form_tag(bicycles_path, method: :get, remote: true, id: 'search-bicycles') do
         .input-group
           = text_field_tag :param, params[:param], class: 'form-control'
-    = render 'shared/categories'
+          = hidden_field_tag :category_id, params[:category_id] if params.key?(:category_id)
+    = render 'categories/list'
     = render 'shared/widget'
 %hr

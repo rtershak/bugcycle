@@ -1,6 +1,8 @@
 .center
   %hr
   .row
+    .text-right
+      = link_to 'Reject', bicycle_suggestion_path(@bicycle, suggestion), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-warning'
     .col-md-8
       %h2
         %a{href: edit_bicycle_suggestion_path(@bicycle, suggestion)}

@@ -21,6 +21,6 @@
     .text-center
       = link_to 'Suggest', new_bicycle_suggestion_path(@bicycle), class: 'btn btn-lg btn-success' if current_user && can_suggest?
   .col-md-4
-    = render 'shared/categories'
+    = render 'categories/list'
     = render 'shared/widget'
 %hr

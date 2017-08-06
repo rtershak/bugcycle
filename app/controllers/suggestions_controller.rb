@@ -1,9 +1,9 @@
 class SuggestionsController < ApplicationController
   before_action :set_bicycle
-  before_action :set_suggestion, only: %i(edit update)
+  before_action :set_suggestion, only: %i(edit update destroy)
 
   def index
-    @suggestions = Suggestion.where(bicycle_id: @bicycle.id).paginate(page: params[:page], per_page: 5)
+    @suggestions = @bicycle.suggestions.paginate(page: params[:page], per_page: 5)
   end
 
   def new
@@ -21,6 +21,11 @@ class SuggestionsController < ApplicationController
 
   def update
     @bicycle.update_attributes(suggestion_params.except(:bicycle))
+
+    destroy
+  end
+
+  def destroy
     @suggestion.destroy
 
     redirect_to bicycle_suggestions_path(@bicycle)

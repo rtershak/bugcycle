@@ -1,0 +1,7 @@
+.well
+  %h4 Categories
+  .row
+    %ul.list-unstyled
+      - @categories.each_with_index do |c, i|
+        %div{class: ('col-lg-6' if i % 4)}
+          = render c

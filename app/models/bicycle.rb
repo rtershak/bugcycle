@@ -11,11 +11,11 @@ class Bicycle < ApplicationRecord
 
   default_scope { order(created_at: :desc) }
 
-  def self.search(param)
+  def self.search(param, bicycles)
     if param
-      where('name ILIKE ? OR description ILIKE ?', "%#{param}%", "%#{param}%")
+      bicycles.where('name ILIKE ? OR description ILIKE ?', "%#{param}%", "%#{param}%")
     else
-      all
+      bicycles
     end
   end
 end

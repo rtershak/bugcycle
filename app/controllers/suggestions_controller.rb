@@ -1,4 +1,7 @@
 class SuggestionsController < ApplicationController
+  load_and_authorize_resource
+
+  before_action :authenticate_user!
   before_action :set_bicycle
   before_action :set_suggestion, only: %i(edit update destroy)
 

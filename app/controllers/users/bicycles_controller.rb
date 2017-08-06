@@ -1,5 +1,6 @@
 module Users
   class BicyclesController < ApplicationController
+    before_action :authenticate_user!
     before_action :initialize_categories, only: %i(new edit)
 
     def index

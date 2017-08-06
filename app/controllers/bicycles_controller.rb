@@ -1,10 +1,11 @@
 class BicyclesController < ApplicationController
+  load_and_authorize_resource
+
   before_action :initialize_bicycle, except: %i(index create)
   before_action :initialize_categories, only: %i(index show)
 
   def index
-    @bicycles = Bicycle.where.not(id: current_user&.usages&.pluck(:bicycle_id)).
-                        search(params[:param], bicycles).paginate(page: params[:page], per_page: 2)
+    @bicycles = Bicycle.search(params[:param], bicycles).paginate(page: params[:page], per_page: 2)
   end
 
   def show
@@ -40,9 +41,10 @@ class BicyclesController < ApplicationController
   private
 
   def bicycles
-    return Category.find(params[:category_id]).bicycles if params.key?(:category_id)
+    bicycles = Bicycle.where.not(id: current_user&.usages&.pluck(:bicycle_id))
+    return bicycles.where(category_id: params[:category_id]) if params.key?(:category_id)
 
-    Bicycle.all
+    bicycles
   end
 
   def bicycle_params
